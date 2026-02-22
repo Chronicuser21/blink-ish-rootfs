@@ -11,6 +11,7 @@ FROM debian:bookworm AS builder
 # Install build dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
+    clang \
     debootstrap \
     libarchive-dev \
     sqlite3 \
