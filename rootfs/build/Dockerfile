@@ -29,9 +29,9 @@ RUN git clone --depth 1 https://github.com/ish-app/ish.git
 
 # Build fakefsify from iSH source
 # Note: fakefsify needs libfakefs which is built from fs/fake-*.c
+# Using default kernel (ish) since we only need the tools, not the full emulator
 WORKDIR /build/ish
 RUN meson setup build \
-    -Dkernel=linux \
     -Dengine=asbestos \
     -Ddefault_library=static \
     && ninja -C build tools/fakefsify
