@@ -45,7 +45,7 @@ RUN mkdir -p /rootfs
 RUN debootstrap \
     --arch=i386 \
     --variant=minbase \
-    --include=apt,dpkg,bash,coreutils,grep,sed,awk \
+    --include=apt,dpkg,bash,coreutils,grep,sed,gawk \
     buster \
     /rootfs \
     http://archive.debian.org/debian
