@@ -26,8 +26,8 @@ jobs:
           # Create container without running it
           docker create --name temp-rootfs debian10-ish-builder
           
-          # Copy the output directory
-          docker cp temp-rootfs:/output ./debian10-ish
+          # Copy the output directory contents directly
+          docker cp temp-rootfs:/output/. ./debian10-ish
           
           # Clean up container
           docker rm temp-rootfs
