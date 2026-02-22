@@ -1,0 +1,4 @@
+# Build outputs
+debian10-ish/
+*.tar.gz
+/output/
