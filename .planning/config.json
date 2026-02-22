@@ -1,0 +1,18 @@
+{
+  "milestone_version": "v1.0",
+  "milestone_name": "Local Linux Shell",
+  "model_profile": "balanced",
+  "executor_model": "sonnet",
+  "planner_model": "inherit",
+  "researcher_model": "sonnet",
+  "commit_docs": true,
+  "workflow": {
+    "research": true,
+    "plan_check": true,
+    "verifier": true,
+    "auto_advance": true
+  },
+  "git": {
+    "branching_strategy": "none"
+  }
+}
