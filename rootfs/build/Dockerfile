@@ -29,7 +29,7 @@ RUN git clone --depth 1 https://github.com/ish-app/ish.git
 WORKDIR /build/ish
 RUN meson setup build \
     -Dkernel=linux \
-    -Dengine=gcc \
+    -Dengine=asbestos \
     -Ddefault_library=static \
     && ninja -C build tools/fakefsify
 
