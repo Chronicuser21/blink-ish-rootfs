@@ -1,0 +1,59 @@
+name: Build Debian Rootfs
+
+on:
+  push:
+    paths:
+      - 'rootfs/**'
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Build Docker image
+        run: |
+          docker build -t debian10-ish-builder rootfs/build/
+      
+      - name: Extract artifacts from container
+        run: |
+          # Create container without running it
+          docker create --name temp-rootfs debian10-ish-builder
+          
+          # Copy the output directory
+          docker cp temp-rootfs:/output ./debian10-ish
+          
+          # Clean up container
+          docker rm temp-rootfs
+      
+      - name: Verify output
+        run: |
+          echo "Checking output structure..."
+          ls -la ./debian10-ish/
+          if [ -d "./debian10-ish/data" ]; then
+            echo "✓ data/ directory found"
+          else
+            echo "✗ data/ directory missing"
+            exit 1
+          fi
+          if [ -f "./debian10-ish/meta.db" ]; then
+            echo "✓ meta.db file found"
+          else
+            echo "✗ meta.db file missing"
+            exit 1
+          fi
+          echo "Rootfs size:"
+          du -sh ./debian10-ish/
+      
+      - name: Upload rootfs artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: debian10-ish-rootfs
+          path: debian10-ish/
+          retention-days: 30
