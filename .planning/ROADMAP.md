@@ -46,7 +46,7 @@ Plans:
 **Plans:** 2 plans in 2 waves
 
 Plans:
-- [ ] 02-01-PLAN.md — Create CI/CD build pipeline for Debian rootfs
+- [x] 02-01-PLAN.md — Create CI/CD build pipeline for Debian rootfs
 - [ ] 02-02-PLAN.md — Build and verify rootfs in iSH app
 
 ### Key Tasks

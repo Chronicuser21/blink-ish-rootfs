@@ -4,19 +4,19 @@
 
 **Core Value:** One app, all the shells — Blink + iSH + apt in a single IPA.
 
-**Current Focus:** Phase 1 complete — libiSH.framework built and verified.
+**Current Focus:** Phase 2 in progress — CI/CD pipeline created for Debian rootfs builds.
 
 ---
 
 ## Current Position
 
-**Phase:** 1 of 5
-**Phase Name:** Build libiSH Framework  
-**Plan:** 4 of 4 complete (Phase 1 done)
-**Status:** Ready to plan
+**Phase:** 2 of 5
+**Phase Name:** Prepare Debian Rootfs
+**Plan:** 1 of 2 complete
+**Status:** In progress
 
 ```
-Progress: [████████████████████] 100%
+Progress: [████░░░░░░░░░░░░░░░░] 20%
 ```
 
 ---
@@ -25,6 +25,9 @@ Progress: [████████████████████] 100%
 
 | Date | Decision | Rationale |
 |------|----------|-----------|
+| 2026-02-22 | Multi-stage Docker build for rootfs | Separates builder (compile) from converter (runtime); smaller final image |
+| 2026-02-22 | Build fakefsify from iSH source | Ensures version consistency; works across platforms |
+| 2026-02-22 | Inline Dockerfile steps | Self-contained build; scripts provided as reference only |
 | 2026-02-22 | Test app files only, no Xcode project | Minimal verification; proper project when integrated into Blink |
 | 2026-02-22 | Private header for framework | Avoids iSH header conflicts with iOS SDK (fallthrough macro, clockid_t) |
 | 2026-02-22 | Disable CLANG_ENABLE_MODULES | Prevents module build failures from header conflicts |
@@ -62,11 +65,12 @@ No pending todos yet.
 | 01 | 02 | 11min | 3 | 6 |
 | 01 | 03 | 22min | 3 | 5 |
 | 01 | 04 | 2min | 2 | 2 |
+| 02 | 01 | 14min | 3 | 5 |
 
 ---
 
 ## Session Continuity
 
 **Last session:** 2026-02-22
-**Stopped at:** Completed 01-04-PLAN.md (Phase 1 complete)
+**Stopped at:** Completed 02-01-PLAN.md (CI/CD build pipeline)
 **Resume file:** None
