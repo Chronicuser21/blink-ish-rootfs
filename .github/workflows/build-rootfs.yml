@@ -50,10 +50,15 @@ jobs:
           fi
           echo "Rootfs size:"
           du -sh ./debian10-ish/
+          
+          # Create tarball for artifact upload (avoids filename issues with special chars)
+          tar -czvf debian10-ish-rootfs.tar.gz -C . debian10-ish
+          echo "Artifact tarball created:"
+          ls -lh debian10-ish-rootfs.tar.gz
       
       - name: Upload rootfs artifact
         uses: actions/upload-artifact@v4
         with:
           name: debian10-ish-rootfs
-          path: debian10-ish/
+          path: debian10-ish-rootfs.tar.gz
           retention-days: 30
