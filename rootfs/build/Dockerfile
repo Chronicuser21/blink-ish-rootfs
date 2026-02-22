@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     clang \
     lld \
+    pkg-config \
     debootstrap \
     libarchive-dev \
     sqlite3 \
